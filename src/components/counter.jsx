@@ -7,26 +7,11 @@ export default class Counter extends Component {
     tags: ['tag1', 'tag2', 'tag3'],
   };
 
-  renderTags() {
-    if (this.state.tags.length === 0) return <p>There are no tags</p>;
-    return (
-      <ul>
-        {this.state.tags.map(tag => (
-          <li key={tag}>{tag}</li>
-        ))}
-      </ul>
-    );
-  }
-
-  formatCount() {
-    const { count } = this.state;
-    return count === 0 ? 'Zero' : count;
-  }
-
   getBadgeClasses() {
+    const { count } = this.state;
     return classNames('badge', 'm-2', {
-      'badge-primary': this.state.count === 0,
-      'badge-secondary': !this.state.count !== 0,
+      'badge-primary': count !== 0,
+      'badge-secondary': count === 0,
     });
   }
 
@@ -35,13 +20,32 @@ export default class Counter extends Component {
     console.log(target);
   };
 
+  formatCount() {
+    const { count } = this.state;
+    return count === 0 ? 'Zero' : count;
+  }
+
+  renderTags() {
+    const { tags } = this.state;
+    if (tags.length === 0) {
+      return <p>There are no tags</p>;
+    }
+    return (
+      <ul>
+        {tags.map(tag => (
+          <li key={tag}>{tag}</li>
+        ))}
+      </ul>
+    );
+  }
+
   render() {
     return (
       <div>
         <span style={{ fontSize: 40 }} className={this.getBadgeClasses()}>
           {this.formatCount()}
         </span>
-        <button className={'btn btn-second btn-sm'} onClick={this.handleIncrement}>
+        <button type="submit" className="btn btn-second btn-sm" onClick={this.handleIncrement}>
           Increment
         </button>
         <ul>{this.renderTags()}</ul>
