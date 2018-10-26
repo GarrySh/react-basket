@@ -1,3 +1,3 @@
 start:
-	yarn start
+	yarn run start
 
