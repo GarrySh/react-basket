@@ -12,16 +12,21 @@ export default class Counters extends Component {
     ],
   };
 
-  handleDelete = () => {
-    console.log('delete handle');
+  handleDelete = id => () => {
+    const { counters } = this.state;
+    this.setState({ counters: counters.filter(item => item.id !== id) });
+    // console.log('delete handle', id);
   };
 
   render() {
     const { counters } = this.state;
     return (
       <div>
+        <button type="button" className="btn btn-primary btn-sm m-2">
+          Reset
+        </button>
         {counters.map(counter => (
-          <Counter key={counter.id} onDelete={this.handleDelete} value={counter.value} selected />
+          <Counter key={counter.id} onDelete={this.handleDelete(counter.id)} counter={counter} />
         ))}
       </div>
     );
