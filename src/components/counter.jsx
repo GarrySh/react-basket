@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
-export default class Counter extends Component {
+class Counter extends Component {
   getBadgeClasses() {
     const { value } = this.props.counter;
     return classNames('badge', 'm-2', {
@@ -39,3 +40,14 @@ export default class Counter extends Component {
     );
   }
 }
+
+Counter.propTypes = {
+  onDelete: PropTypes.func.isRequired,
+  onIncrement: PropTypes.func.isRequired,
+  counter: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    value: PropTypes.number.isRequired,
+  }).isRequired,
+};
+
+export default Counter;

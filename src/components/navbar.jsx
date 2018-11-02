@@ -1,13 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-export default class Navbar extends Component {
-  render() {
-    return (
-      <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="#">
-          Navbar
-        </a>
-      </nav>
-    );
-  }
-}
+const NavBar = ({ totalCounters }) => (
+  <nav className="navbar navbar-light bg-light">
+    <a className="navbar-brand" href="/#">
+      Navbar
+      {'  '}
+      <span className="badge badge-secondary badge-pill">{totalCounters}</span>
+    </a>
+  </nav>
+);
+
+NavBar.propTypes = {
+  totalCounters: PropTypes.number.isRequired,
+};
+
+export default NavBar;

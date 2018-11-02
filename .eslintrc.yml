@@ -8,3 +8,4 @@ plugins:
 
 rules:
   react/destructuring-assignment: never
+  no-console: 0
