@@ -1,4 +1,4 @@
-import App from './components/App';
+import app from './app';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-App();
+app();
